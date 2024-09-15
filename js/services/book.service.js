@@ -22,7 +22,15 @@ var gBooks = [
 ]
 
 function getBooks(options = {}) {
-    return _filterBooks(options.filterBy)
+
+    var filteredBooks = _filterBooks(options.filterBy)
+
+    if (options.sortBy.sortField === 'title') {
+        filteredBooks.sort((b1, b2) => b1.title.localeCompare(b2.title) * options.sortBy.descending)
+    } else if (options.sortBy.sortField === 'price') {
+        filteredBooks.sort((b1, b2) => (b1.price - b2.price) * options.sortBy.descending) 
+    }
+    return filteredBooks
 }
 
 function removeBook(bookId) {

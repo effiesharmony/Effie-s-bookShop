@@ -26,18 +26,18 @@
             <div class="sort-by">
                 <select class="sort-field" onchange="onSetSortBy()">
                     <option value="">Select Sorting</option>
-                    <option value="vendor">By Vendor</option>
-                    <option value="maxSpeed">Speed</option>
+                    <option value="title">By Book Title</option>
+                    <option value="price">Price</option>
                 </select>
                 <label>
                     <span>Descending</span>
-                    <input class="sort-dir" type="checkbox" oninput="onSetSortBy()" />
+                    <input class="descending" type="checkbox" oninput="onSetSortBy()" />
                 </label>
             </div>
         </fieldset>
 
         </section>
-    </header>
+    </headejmr>
     <main>
         <section>
             <button onclick="onAddBook()">Add a Book</button>

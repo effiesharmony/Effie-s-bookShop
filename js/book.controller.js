@@ -49,7 +49,7 @@ function onAddBook() {
     renderBooks()
 }
 
-function onOpenModal(bookId){
+function onOpenModal(bookId) {
     const book = gBooks.filter(book => book.id === bookId)[0]
     var display = JSON.stringify(book, null, 2)
 
@@ -69,5 +69,14 @@ function onSetFilterBy() {
     gQueryOptions.filterBy.minPrice = +elMinPrice.value
 
     gQueryOptions.page.idx = 0
+    renderBooks()
+}
+
+function onSetSortBy() {
+    var elsortField = document.querySelector('.sort-by .sort-field')
+    var elDescending = document.querySelector('.sort-by .descending')
+
+    gQueryOptions.sortBy.sortField = elsortField.value
+    gQueryOptions.sortBy.descending = elDescending.checked ? -1 : 1
     renderBooks()
 }
