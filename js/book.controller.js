@@ -1,11 +1,17 @@
 'use strict'
 
+const gQueryOptions = {
+    filterBy: { txt: '', minPrice: 0 },
+    sortBy: {},
+    page: { idx: 0, size: 4 },
+}
+
 function onInit() {
     renderBooks()
 }
 function renderBooks() {
     const elTbody = document.querySelector('tbody')
-    const books = getBooks()
+    const books = getBooks(gQueryOptions)
 
     const strHtmls = books.map(book => `
          <tr>
@@ -43,17 +49,6 @@ function onAddBook() {
     renderBooks()
 }
 
-// function onOpenModal(bookId){
-//     const elDetails = document.querySelector('.book-details')
-//     const book = getBookBtId(bookId)
-
-//     elDetails.innerHTML = `
-//     title: ${book.title}
-//     price: ${book.price}`
-
-
-// }
-
 function onOpenModal(bookId){
     const book = gBooks.filter(book => book.id === bookId)[0]
     var display = JSON.stringify(book, null, 2)
@@ -64,4 +59,15 @@ function onOpenModal(bookId){
     elPre.innerText = display
     elModal.showModal()
 
+}
+
+function onSetFilterBy() {
+    const elTitle = document.querySelector('.filter-by .title')
+    const elMinPrice = document.querySelector('.filter-by .min-price')
+
+    gQueryOptions.filterBy.txt = elTitle.value
+    gQueryOptions.filterBy.minPrice = +elMinPrice.value
+
+    gQueryOptions.page.idx = 0
+    renderBooks()
 }

@@ -4,25 +4,25 @@ var gBooks = [
     {
         id: 'bg4J78',
         title: 'The Holy Bible',
-        price: 5,
+        price: 50,
         imgUrl: 'bible.jpg'
     },
     {
         id: 'bg4J79',
         title: 'Pinocchio',
-        price: 10,
+        price: 150,
         imgUrl: 'bible.jpg'
     },
     {
         id: 'bg4J70',
         title: 'Little Red Riding Hood',
-        price: 15,
+        price: 300,
         imgUrl: 'bible.jpg'
     },
 ]
 
-function getBooks() {
-    return gBooks
+function getBooks(options = {}) {
+    return _filterBooks(options.filterBy)
 }
 
 function removeBook(bookId) {
@@ -49,5 +49,19 @@ function _createBook(title, price) {
 }
 
 function getBookById(bookId) {
-	return gBooks.find(book => book.id === bookId)
+    return gBooks.find(book => book.id === bookId)
+}
+
+function _filterBooks(filterBy) {
+    var books = gBooks.slice()
+
+    if (filterBy.txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        books = books.filter(book => regex.test(book.title))
+    }
+
+    if (filterBy.minPrice) {
+        books = books.filter(book => book.price > filterBy.minPrice)
+    }
+    return books
 }

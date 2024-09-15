@@ -9,6 +9,34 @@
 <body onload="onInit()">
     <header>
         <h1>✨Effie's Book Shop!✨</h1>
+
+        <section class="book-filter"></section>
+        <fieldset>
+            <legend>Filter & Sorting</legend>
+
+            <div class="filter-by">
+                <input class="title" oninput="onSetFilterBy()" placeholder="Looking for a book?" type="text">
+                <label>
+                    <span>Min Price:</span>
+                    <input class="min-price" type="range" min="0" max="300" value="0"
+                        onchange="this.title=this.value;onSetFilterBy()" />
+                </label>
+            </div>
+
+            <div class="sort-by">
+                <select class="sort-field" onchange="onSetSortBy()">
+                    <option value="">Select Sorting</option>
+                    <option value="vendor">By Vendor</option>
+                    <option value="maxSpeed">Speed</option>
+                </select>
+                <label>
+                    <span>Descending</span>
+                    <input class="sort-dir" type="checkbox" oninput="onSetSortBy()" />
+                </label>
+            </div>
+        </fieldset>
+
+        </section>
     </header>
     <main>
         <section>
