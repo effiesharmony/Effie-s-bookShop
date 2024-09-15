@@ -22,6 +22,23 @@ function renderBooks() {
 }
 
 function onRemoveBook(bookId) {
+    // model
     removeBook(bookId)
+    // DOM
+    renderBooks()
+}
+
+function onUpdateBook(bookId) {
+    const price = +prompt('Select a new price:')
+    // model
+    updatePrice(bookId, price)
+    // DOM
+    renderBooks()
+}
+
+function onAddBook() {
+    const title = prompt(`Enter the book's title:`)
+    const price = +prompt(`Enter the book's price:`)
+    addBook(title, price)
     renderBooks()
 }

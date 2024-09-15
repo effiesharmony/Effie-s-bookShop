@@ -7,18 +7,25 @@
 </head>
 
 <body onload="onInit()">
+    <header>
+        <h1>✨Effie's Book Shop!✨</h1>
+    </header>
+    <main>
+        <section>
+            <button onclick="onAddBook()">Add a Book</button>
+        </section>
+        <table>
+            <thead>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
 
-    <table>
-        <thead>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </main>
+    <script src="js/services/utils.services.js"></script>
     <script src="js/services/book.service.js"></script>
     <script src="js/book.controller.js"></script>
 </body>
