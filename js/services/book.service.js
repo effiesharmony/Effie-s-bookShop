@@ -47,3 +47,7 @@ function _createBook(title, price) {
         price,
     }
 }
+
+function getBookById(bookId) {
+	return gBooks.find(book => book.id === bookId)
+}

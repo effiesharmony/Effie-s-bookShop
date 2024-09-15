@@ -4,7 +4,7 @@ function onInit() {
     renderBooks()
 }
 function renderBooks() {
-    const elItems = document.querySelector('tbody')
+    const elTbody = document.querySelector('tbody')
     const books = getBooks()
 
     const strHtmls = books.map(book => `
@@ -12,13 +12,13 @@ function renderBooks() {
                 <td>${book.title}</td>
                 <td>${book.price}</td>
                 <td>
-                    <button onclick="">Read</button>
+                    <button onclick="onOpenModal('${book.id}')">Details</button>
                     <button onclick="onUpdateBook('${book.id}')">Update</button>
                     <button onclick="onRemoveBook('${book.id}')">Delete</button>
                 </td>
             </tr>
         `)
-    elItems.innerHTML = strHtmls.join('')
+    elTbody.innerHTML = strHtmls.join('')
 }
 
 function onRemoveBook(bookId) {
@@ -41,4 +41,27 @@ function onAddBook() {
     const price = +prompt(`Enter the book's price:`)
     addBook(title, price)
     renderBooks()
+}
+
+// function onOpenModal(bookId){
+//     const elDetails = document.querySelector('.book-details')
+//     const book = getBookBtId(bookId)
+
+//     elDetails.innerHTML = `
+//     title: ${book.title}
+//     price: ${book.price}`
+
+
+// }
+
+function onOpenModal(bookId){
+    const book = gBooks.filter(book => book.id === bookId)[0]
+    var display = JSON.stringify(book, null, 2)
+
+    const elPre = document.querySelector('pre')
+    const elModal = document.querySelector('.details-container')
+
+    elPre.innerText = display
+    elModal.showModal()
+
 }
