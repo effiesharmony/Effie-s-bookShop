@@ -1,6 +1,6 @@
 'use strict'
 
-var gBooks =[
+var gBooks = [
     {
         id: 'bg4J78',
         title: 'The Holy Bible',
@@ -21,6 +21,11 @@ var gBooks =[
     },
 ]
 
-function getBooks(){
+function getBooks() {
     return gBooks
+}
+
+function removeBook(bookId) {
+    const idx = gBooks.findIndex(book => book.id === bookId)
+    gBooks.splice(idx, 1)
 }
